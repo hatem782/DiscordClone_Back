@@ -42,6 +42,24 @@ exports.LoginUser = async (req, res) => {
   }
 };
 
+exports.GetUserById = async (req, res) => {
+  try {
+    const user = await Modeluser.findById(req.headers.userid);
+    console.log(user);
+
+    if (user == null) {
+      return res.status(400).json({ msg: `No user with that id`, user: null });
+    } else {
+      return res
+        .status(200)
+        .json({ msg: `Wellcome again ${user.name} `, user: user });
+    }
+  } catch (err) {
+    console.log(err);
+    return res.status(400).json({ msg: "erreur", error: err });
+  }
+};
+
 /*
 exports.GetAllContacts = async (req, res) => {
   try {

@@ -1,10 +1,15 @@
 const express = require("express");
-const { CreateUser, LoginUser } = require("../controllers/User.controller");
+const {
+  CreateUser,
+  LoginUser,
+  GetUserById,
+} = require("../controllers/User.controller");
 
 const router = express.Router();
 
 router.post("/create", CreateUser);
 router.post("/login", LoginUser);
+router.get("/getuser", GetUserById);
 /*
 router.get("/getAll", protect, GetAllContacts);
 router.get("/getOne/:id", protect, GetOneContact);
